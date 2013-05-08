@@ -263,7 +263,7 @@ int callback_panicf(lua_State* L)
 {
 	lua_pushlightuserdata(L,(void*)&PanicFIDRegistryKey);
 	lua_gettable(L,LUA_REGISTRYINDEX);
-	unsigned int fid = lua_tointeger(L,-1);
+	unsigned int fid = lua_tointegerx(L,-1,NULL);
 	lua_pop(L,1);
 	GoInterface* gi = clua_getgostate(L);
 	return golua_callpanicfunction(*gi,fid);
@@ -278,7 +278,7 @@ GoInterface clua_atpanic(lua_State* L, unsigned int panicf_id)
 	lua_pushlightuserdata(L, (void*)&PanicFIDRegistryKey);
 	lua_gettable(L,LUA_REGISTRYINDEX);
 	if(lua_isnil(L, -1) == 0)
-		old_id = lua_tointeger(L,-1);
+		old_id = lua_tointegerx(L,-1,NULL);
 	lua_pop(L, 1);
 
 	//set registry key for function id of go panic function

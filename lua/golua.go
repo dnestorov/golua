@@ -79,7 +79,7 @@ func golua_interface_newindex_callback(Li interface{}, iid uint, field_name_cstr
 		fallthrough
 	case reflect.Int64:
 		if luatype == LUA_TNUMBER {
-			fval.SetInt(int64(C.lua_tointeger(L.s, 3)))
+			fval.SetInt(int64(C.lua_tointegerx(L.s, 3, nil)))
 			return 1
 		} else {
 			L.PushString("Wrong assignment to field "+field_name)
@@ -96,7 +96,7 @@ func golua_interface_newindex_callback(Li interface{}, iid uint, field_name_cstr
 		fallthrough
 	case reflect.Uint64:
 		if luatype == LUA_TNUMBER {
-			fval.SetUint(uint64(C.lua_tointeger(L.s, 3)))
+			fval.SetUint(uint64(C.lua_tointegerx(L.s, 3, nil)))
 			return 1
 		} else {
 			L.PushString("Wrong assignment to field "+field_name)
@@ -116,7 +116,7 @@ func golua_interface_newindex_callback(Li interface{}, iid uint, field_name_cstr
 		fallthrough
 	case reflect.Float64:
 		if luatype == LUA_TNUMBER {
-			fval.SetFloat(float64(C.lua_tonumber(L.s, 3)))
+			fval.SetFloat(float64(C.lua_tonumberx(L.s, 3, nil)))
 			return 1
 		} else {
 			L.PushString("Wrong assignment to field "+field_name)

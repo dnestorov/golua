@@ -145,7 +145,7 @@ func (L *State) GSub(s string, p string, r string) string {
 func (L *State) LoadFile(filename string) int {
 	Cfilename := C.CString(filename)
 	defer C.free(unsafe.Pointer(Cfilename))
-	return int(C.luaL_loadfile(L.s, Cfilename))
+	return int(C.luaL_loadfilex(L.s, Cfilename, nil))
 }
 
 // luaL_loadstring
