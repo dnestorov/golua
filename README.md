@@ -34,7 +34,7 @@ Lua's Virtual Machine is stack based, you can call lua functions like this:
 
 ```go
 // push "print" function on the stack
-L.GetField(lua.LUA_GLOBALSINDEX, "print")
+L.GetGlobal("print")
 // push the string "Hello World!" on the stack
 L.PushString("Hello World!")
 // call print with one argument, expecting no results
