@@ -347,3 +347,16 @@ func TestStackTrace(t *testing.T) {
 		t.Fatalf("Wrong size of stack trace (%v)\n", le.StackTrace())
 	}
 }
+
+func TestIssue8(t *testing.T) {
+	state := NewState()
+	state.OpenBase()
+	state.OpenMath()
+	defer state.Close()
+
+	state.LoadString("return math.sqrt(4)")
+	err := state.Call(0, 1)
+	if err != nil {
+	    t.Fatal(err)
+	}
+}

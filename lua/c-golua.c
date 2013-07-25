@@ -332,44 +332,38 @@ void clua_openbase(lua_State* L)
 
 void clua_openio(lua_State* L)
 {
-	lua_pushcfunction(L,&luaopen_io);
-	lua_pushstring(L,"io");
-	lua_call(L, 1, 0);
+	luaL_requiref(L, "io", &luaopen_io, 1);
+	lua_pop(L, 1);
 }
 
 void clua_openmath(lua_State* L)
 {
-	lua_pushcfunction(L,&luaopen_math);
-	lua_pushstring(L,"math");
-	lua_call(L, 1, 0);
+	luaL_requiref(L, "math", &luaopen_math, 1);
+	lua_pop(L, 1);
 }
 
 void clua_openpackage(lua_State* L)
 {
-	lua_pushcfunction(L,&luaopen_package);
-	lua_pushstring(L,"package");
-	lua_call(L, 1, 0);
+	luaL_requiref(L, "package", &luaopen_package, 1);
+	lua_pop(L, 1);
 }
 
 void clua_openstring(lua_State* L)
 {
-	lua_pushcfunction(L,&luaopen_string);
-	lua_pushstring(L,"string");
-	lua_call(L, 1, 0);
+	luaL_requiref(L, "string", &luaopen_string, 1);
+	lua_pop(L, 1);
 }
 
 void clua_opentable(lua_State* L)
 {
-	lua_pushcfunction(L,&luaopen_table);
-	lua_pushstring(L,"table");
-	lua_call(L, 1, 0);
+	luaL_requiref(L, "table", &luaopen_table, 1);
+	lua_pop(L, 1);
 }
 
 void clua_openos(lua_State* L)
 {
-	lua_pushcfunction(L,&luaopen_os);
-	lua_pushstring(L,"os");
-	lua_call(L, 1, 0);
+	luaL_requiref(L, "os", &luaopen_os, 1);
+	lua_pop(L, 1);
 }
 
 void clua_hook_function(lua_State *L, lua_Debug *ar)
