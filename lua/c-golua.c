@@ -366,6 +366,24 @@ void clua_openos(lua_State* L)
 	lua_pop(L, 1);
 }
 
+void clua_opencoroutine(lua_State *L)
+{
+	luaL_requiref(L, "coroutine", &luaopen_coroutine, 1);
+	lua_pop(L, 1);
+}
+
+void clua_opendebug(lua_State *L)
+{
+	luaL_requiref(L, "debug", &luaopen_debug, 1);
+	lua_pop(L, 1);
+}
+
+void clua_openbit32(lua_State *L)
+{
+	luaL_requiref(L, "bit32", &luaopen_bit32, 1);
+	lua_pop(L, 1);
+}
+
 void clua_hook_function(lua_State *L, lua_Debug *ar)
 {
 	lua_checkstack(L, 2);

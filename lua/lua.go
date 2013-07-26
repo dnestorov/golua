@@ -598,6 +598,21 @@ func (L *State) OpenOS() {
 	C.clua_openos(L.s)
 }
 
+// Calls luaopen_debug
+func (L *State) OpenDebug() {
+	C.clua_opendebug(L.s)
+}
+
+// Calls luaopen_bit32
+func (L *State) OpenBit32() {
+	C.clua_openbit32(L.s)
+}
+
+// Calls luaopen_coroutine
+func (L *State) OpenCoroutine() {
+	C.clua_opencoroutine(L.s)
+}
+
 // Sets the maximum number of operations to execute at instrNumber, after this the execution ends
 func (L *State) SetExecutionLimit(instrNumber int) {
 	C.clua_setexecutionlimit(L.s, C.int(instrNumber))

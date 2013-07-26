@@ -27,6 +27,9 @@ void clua_openpackage(lua_State* L);
 void clua_openstring(lua_State* L);
 void clua_opentable(lua_State* L);
 void clua_openos(lua_State* L);
+void clua_opencoroutine(lua_State *L);
+void clua_opendebug(lua_State *L);
+void clua_openbit32(lua_State *L);
 void clua_setexecutionlimit(lua_State* L, int n);
 
 int clua_isgofunction(lua_State *L, int n);
