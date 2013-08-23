@@ -357,6 +357,37 @@ func TestIssue8(t *testing.T) {
 	state.LoadString("return math.sqrt(4)")
 	err := state.Call(0, 1)
 	if err != nil {
-	    t.Fatal(err)
+		t.Fatal(err)
+	}
+}
+
+func TestConv(t *testing.T) {
+	L := NewState()
+	defer L.Close()
+	L.OpenLibs()
+
+	L.PushString("10")
+	n := L.ToNumber(-1)
+	if n != 10 {
+		t.Fatalf("Wrong conversion (str -> int)")
+	}
+	if L.Type(-1) != LUA_TSTRING {
+		t.Fatalf("Wrong type (str)")
+	}
+
+	L.Pop(1)
+
+	L.PushInteger(10)
+	s := L.ToString(-1)
+	if s != "10" {
+		t.Fatalf("Wrong conversion (int -> str)")
+	}
+
+	L.Pop(1)
+
+	L.PushString("a\000test")
+	s = L.ToString(-1)
+	if s != "a\000test" {
+		t.Fatalf("Wrong conversion (str -> str): <%s>", s)
 	}
 }
