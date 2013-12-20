@@ -97,6 +97,11 @@ ON THREADS AND COROUTINES
 
 'lua.State' is not thread safe, but the library itself is. Lua's coroutines exist but (to my knowledge) have never been tested and are likely to encounter the same problems that errors have, use at your own peril.
 
+ODDS AND ENDS
+---------------------
+
+* Compiling from source yields only a static link library (liblua.a), you can either produce the dynamic link library on your own or use the `luaa` build tag.
+
 CONTRIBUTORS
 ---------------------
 
@@ -108,6 +113,7 @@ CONTRIBUTORS
 * Ruitao
 * Xushiwei
 * Isaint
+* hsinhoyeh
 
 SEE ALSO
 ---------------------
