@@ -115,6 +115,8 @@ CONTRIBUTORS
 * Isaint
 * hsinhoyeh
 * Viktor Palmkvist
+* HongZhen Peng
+* Admin36
 
 SEE ALSO
 ---------------------
