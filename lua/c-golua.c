@@ -1,6 +1,7 @@
 #include <lua.h>
 #include <lauxlib.h>
 #include <lualib.h>
+#include <ffi.h>
 #include <stdint.h>
 #include <stdio.h>
 #include "_cgo_export.h"
@@ -389,6 +390,12 @@ void clua_opendebug(lua_State *L)
 void clua_openbit32(lua_State *L)
 {
 	luaL_requiref(L, "bit32", &luaopen_bit32, 1);
+	lua_pop(L, 1);
+}
+
+void clua_openffi(lua_State *L)
+{
+	luaL_requiref(L, "ffi", &luaopen_ffi, 1);
 	lua_pop(L, 1);
 }
 
