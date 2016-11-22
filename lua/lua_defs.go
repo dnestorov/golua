@@ -2,8 +2,9 @@ package lua
 
 /*
 #include <lua.h>
- #include <lauxlib.h>
- #include <lualib.h>
+#include <lauxlib.h>
+#include <lualib.h>
+#include "ver_cdefs.h"
 
 */
 import "C"
@@ -23,10 +24,10 @@ const (
 )
 
 const (
-	LUA_VERSION       = C.LUA_VERSION
-	LUA_RELEASE       = C.LUA_RELEASE
+	LUA_VERSION       = C.LUA_VERSION_MOD
+	LUA_RELEASE       = C.LUA_RELEASE_MOD
 	LUA_VERSION_NUM   = C.LUA_VERSION_NUM
-	LUA_COPYRIGHT     = C.LUA_COPYRIGHT
+	LUA_COPYRIGHT     = C.LUA_COPYRIGHT_MOD
 	LUA_AUTHORS       = C.LUA_AUTHORS
 	LUA_MULTRET       = C.LUA_MULTRET
 	LUA_REGISTRYINDEX = C.LUA_REGISTRYINDEX

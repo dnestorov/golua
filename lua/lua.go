@@ -6,12 +6,13 @@
 package lua
 
 /*
-#cgo CFLAGS: -Ilua
+#cgo CFLAGS: -Ilua -Iffi
 #cgo llua LDFLAGS: -llua -lluaffifb
 #cgo luaa LDFLAGS: -llua -lm -ldl -lluaffifb
-#cgo linux,!llua,!luaa LDFLAGS: -llua5.3 -lluaffifb
+#cgo linux,!llua,!luaa LDFLAGS: -llua -lluaffifb
 #cgo darwin,!luaa LDFLAGS: -llua -lluaffifb
 #cgo freebsd,!luaa LDFLAGS: -llua -lluaffifb
+#cgo windows,!luaa LDFLAGS: -llua -lluaffifb
 
 #include <lua.h>
 #include <stdlib.h>
@@ -428,8 +429,8 @@ func (L *State) RawGet(index int) {
 }
 
 // lua_rawgeti
-func (L *State) RawGeti(index int, n int) {
-	C.lua_rawgeti(L.s, C.int(index), C.int(n))
+func (L *State) RawGeti(index int, n int64) {
+	C.lua_rawgeti(L.s, C.int(index), C.lua_Integer(n))
 }
 
 // lua_rawset
@@ -438,8 +439,8 @@ func (L *State) RawSet(index int) {
 }
 
 // lua_rawseti
-func (L *State) RawSeti(index int, n int) {
-	C.lua_rawseti(L.s, C.int(index), C.int(n))
+func (L *State) RawSeti(index int, n int64) {
+	C.lua_rawseti(L.s, C.int(index), C.lua_Integer(n))
 }
 
 // Registers a Go function as a global variable

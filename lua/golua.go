@@ -1,7 +1,7 @@
 package lua
 
 /*
-#cgo CFLAGS: -Ilua
+#cgo CFLAGS: -Ilua -Iffi
 
 #include <lua.h>
 #include <lualib.h>
