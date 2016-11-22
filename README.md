@@ -70,6 +70,20 @@ func main() {
 }
 ```
 
+To enable the FFI functionality
+```
+func main() {
+	L := lua.NewState()
+	defer L.Close()
+	L.OpenLibs()
+	
+	// this one is needed to enable the FFI module
+	L.OpenFFI()
+
+	// more code comes here...
+}
+```
+
 ON ERROR HANDLING
 ---------------------
 
