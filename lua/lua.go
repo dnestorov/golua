@@ -7,11 +7,11 @@ package lua
 
 /*
 #cgo CFLAGS: -Ilua
-#cgo llua LDFLAGS: -llua
-#cgo luaa LDFLAGS: -llua -lm -ldl
-#cgo linux,!llua,!luaa LDFLAGS: -llua5.2
-#cgo darwin,!luaa LDFLAGS: -llua
-#cgo freebsd,!luaa LDFLAGS: -llua
+#cgo llua LDFLAGS: -llua -lluaffifb
+#cgo luaa LDFLAGS: -llua -lm -ldl -lluaffifb
+#cgo linux,!llua,!luaa LDFLAGS: -llua5.3 -lluaffifb
+#cgo darwin,!luaa LDFLAGS: -llua -lluaffifb
+#cgo freebsd,!luaa LDFLAGS: -llua -lluaffifb
 
 #include <lua.h>
 #include <stdlib.h>
@@ -639,6 +639,13 @@ func (L *State) OpenBit32() {
 func (L *State) OpenCoroutine() {
 	C.clua_opencoroutine(L.s)
 }
+
+// Calls luaopen_ffi
+func (L *State) OpenFFI() {
+	C.clua_openffi(L.s)
+}
+
+
 
 // Sets the maximum number of operations to execute at instrNumber, after this the execution ends
 func (L *State) SetExecutionLimit(instrNumber int) {
