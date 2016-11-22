@@ -451,13 +451,13 @@ func (L *State) Register(name string, f LuaGoFunction) {
 // lua_remove
 func (L *State) Remove(index int) {
 	C.lua_rotate(L.s, C.int(index), -1)
-	C.lua_pop(L.s, 1)
+	L.Pop(1)
 }
 
 // lua_replace
 func (L *State) Replace(index int) {
 	C.lua_copy(L.s, -1, C.int(index))
-	C.lua_pop(L.s, 1)
+	L.Pop(1)
 }
 
 // lua_resume
