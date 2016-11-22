@@ -9,19 +9,19 @@ Will work as long as you point CGO to the required libraries:
 
 On Windows
 
-	# set CGO_LDFLAGS=-L<path_to_lua_lib> -L<path_to_libluaffifb>
+	# set CGO_LDFLAGS=%CGO_LDFLAGS% -L<path_to_lua_lib> -L<path_to_libluaffifb>
 	
 On Linux/UNIX 
 
-	# set CGO_LDFLAGS=-L<path_to_lua_lib> -L<path_to_libluaffifb>
+	# export CGO_LDFLAGS=$CGO_LDFLAGS -L<path_to_lua_lib> -L<path_to_libluaffifb>
 
-Or add the libraries path to lua.go
+Or add the libraries path to `$GOPATH/src/pkg/github.com/dnestorov/golua/lua/lua.go`
 
-	#cgo CFLAGS: -Ilua -Iffi
+	#cgo CFLAGS: -Ilua -Iffi -L<path_to_lua_lib> -L<path_to_libluaffifb>
 
 You can then try to run the examples:
 
-	$ cd /usr/local/go/src/pkg/github.com/aarzilli/golua/example/
+	$ cd $GOPATH/src/pkg/github.com/dnestorov/golua/example/
 	$ go run basic.go
 	$ go run alloc.go
 	$ go run panic.go
