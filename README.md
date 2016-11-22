@@ -71,7 +71,7 @@ func main() {
 ```
 
 To enable the FFI functionality
-```
+```go
 func main() {
 	L := lua.NewState()
 	defer L.Close()
