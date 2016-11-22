@@ -26,6 +26,7 @@ You can then try to run the examples:
 	$ go run alloc.go
 	$ go run panic.go
 	$ go run userdata.go
+	$ go run ffi.go
 
 QUICK START
 ---------------------
