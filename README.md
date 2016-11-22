@@ -3,13 +3,21 @@ Go Bindings for the lua C API
 
 Simplest way to install:
 
-	# go get -u github.com/aarzilli/golua/lua
+	# go get -u github.com/dnestorov/golua/lua
 
-Will work as long as your compiler can find a shared object called lua5.1 on linux, or lua anywhere else.
-If your linux system uses "lua" as the shared object name for lua (for example, Fedora Core does this) you can install using:
+Will work as long as you point CGO to the required libraries:
 
-	# go get -u -tags llua github.com/aarzilli/golua/lua
+On Windows
 
+	# set CGO_LDFLAGS=-L<path_to_lua_lib> -L<path_to_libluaffifb>
+	
+On Linux/UNIX 
+
+	# set CGO_LDFLAGS=-L<path_to_lua_lib> -L<path_to_libluaffifb>
+
+Or add the libraries path to lua.go
+
+	#cgo CFLAGS: -Ilua -Iffi
 
 You can then try to run the examples:
 
@@ -116,7 +124,7 @@ ODDS AND ENDS
 
 * Compiling from source yields only a static link library (liblua.a), you can either produce the dynamic link library on your own or use the `luaa` build tag.
 
-CONTRIBUTORS
+ORIGINAL CONTRIBUTORS
 ---------------------
 
 * Adam Fitzgerald (original author)
